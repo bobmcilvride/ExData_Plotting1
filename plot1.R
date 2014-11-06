@@ -5,9 +5,6 @@ plot1 <- function() {
     # the following plots below, all of which were constructed using the base 
     # plotting system.
     
-    # Construct the plot and save it to a PNG file with a width of 480 pixels 
-    # and a height of 480 pixels.
-    
     # set path to input file
     f <- paste(getwd(), "household_power_consumption.txt", sep="/")
     
@@ -23,10 +20,7 @@ plot1 <- function() {
         as.Date(as.character(df.input$Date), format = "%d/%m/%Y") <= "2007-02-02"),]
     
     # set path for plot output file
-    f.out <- paste(getwd(),
-                    "4 - Exploratory Data Analysis", 
-                    "ExData_Plotting1",
-                    "plot1.png", sep="/")
+    f.out <- paste(getwd(), "plot1.png", sep="/")
     
     # define graphics device
     png(filename = f.out,
