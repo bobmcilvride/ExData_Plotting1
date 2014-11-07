@@ -8,17 +8,19 @@ plot3 <- function() {
     # set path to input file
     f <- paste(getwd(), "household_power_consumption.txt", sep="/")
     
-    #read input file
-    df.input <- data.frame(read.table(f, header = TRUE, 
-                                      comment.char="",
-                                      sep = ";", 
-                                      na.strings="?"))
+    # read input file
+    tbl <- read.table(f, header = TRUE, sep = ";", na.strings = "?", stringsAsFactors = FALSE, comment.char = "")
+    
+    ## create/concatenate DateTime column
+    tbl$DateTime <- paste(tbl$Date, tbl$Time, " ")
+    
+    ## convert Date and DateTime variables to classes
+    tbl <- transform(tbl, Date = as.Date(Date, format = "%d/%m/%Y"), 
+                     DateTime = strptime(DateTime, format="%d/%m/%Y %H:%M:%S"))
     
     # subset with specific dates
-    df.subset <- df.input[which(
-        as.Date(as.character(paste(df.input$Date, df.input$Time)), format = "%d/%m/%Y %H:%M:%S") >= "2007-02-01 00:00:00" & 
-            as.Date(as.character(df.input$Date), format = "%d/%m/%Y") <= "2007-02-02"),]
-
+    tbl <- tbl[tbl$Date %in% as.Date(c('2007-02-01', '2007-02-02'), format = "%Y-%m-%d"), ]
+    
     # set path for plot output file
     f.out <- paste(getwd(), "plot3.png", sep="/")
     
@@ -28,8 +30,8 @@ plot3 <- function() {
         pointsize = 12, bg = "white")
     
     # get the range for the x and y axis 
-    xrange <- range(strptime(as.character(paste(df.subset$Date, df.subset$Time)), format = "%d/%m/%Y %H:%M:%S")) 
-    yrange <- range(as.numeric(cbind(df.subset$Sub_metering_1, df.subset$Sub_metering_2, df.subset$Sub_metering_3))) 
+    xrange <- range(tbl$DateTime) 
+    yrange <- range(as.numeric(cbind(tbl$Sub_metering_1, tbl$Sub_metering_2, tbl$Sub_metering_3))) 
     
     # set up the plot 
     plot(xrange, yrange, 
@@ -39,10 +41,10 @@ plot3 <- function() {
     )
     
     # add lines to plot
-    lines(strptime(as.character(paste(df.subset$Date, df.subset$Time)), format = "%d/%m/%Y %H:%M:%S"),df.subset$Sub_metering_1,col="black") 
-    lines(strptime(as.character(paste(df.subset$Date, df.subset$Time)), format = "%d/%m/%Y %H:%M:%S"),df.subset$Sub_metering_2,col="red")
-    lines(strptime(as.character(paste(df.subset$Date, df.subset$Time)), format = "%d/%m/%Y %H:%M:%S"),df.subset$Sub_metering_3,col="blue") 
-    
+    lines(tbl$DateTime,tbl$Sub_metering_1,col="black") 
+    lines(tbl$DateTime,tbl$Sub_metering_2,col="red")
+    lines(tbl$DateTime,tbl$Sub_metering_3,col="blue") 
+        
     # add legend to plot
     legend('topright',
            c("Sub_metering_1","Sub_metering_2","Sub_metering_3"),

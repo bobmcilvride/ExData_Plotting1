@@ -11,10 +11,6 @@ plot4 <- function() {
     # read input file
     tbl <- read.table(f, header = TRUE, sep = ";", na.strings = "?", stringsAsFactors = FALSE, comment.char = "")
     
-    #df.subset <- df.input[which(
-    #    as.Date(as.character(df.input$Date), format = "%d/%m/%Y") >= "2007-02-01" & 
-    #        as.Date(as.character(df.input$Date), format = "%d/%m/%Y") <= "2007-02-02"),]
-
     ## create/concatenate DateTime column
     tbl$DateTime <- paste(tbl$Date, tbl$Time, " ")
     

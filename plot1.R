@@ -9,15 +9,13 @@ plot1 <- function() {
     f <- paste(getwd(), "household_power_consumption.txt", sep="/")
     
     # read input file
-    df.input <- data.frame(read.table(f, header = TRUE, 
-                                      comment.char="", 
-                                      sep = ";", 
-                                      na.strings="?"))
+    tbl <- read.table(f, header = TRUE, sep = ";", na.strings = "?", stringsAsFactors = FALSE, comment.char = "")
+    
+    # Convert Date to a class
+    tbl <- transform(tbl, Date = as.Date(Date, format = "%d/%m/%Y"))
     
     # subset with specific dates
-    df.subset <- df.input[which(
-        as.Date(as.character(df.input$Date), format = "%d/%m/%Y") >= "2007-02-01" & 
-        as.Date(as.character(df.input$Date), format = "%d/%m/%Y") <= "2007-02-02"),]
+    tbl <- tbl[tbl$Date %in% as.Date(c('2007-02-01', '2007-02-02'), format = "%Y-%m-%d"), ]
     
     # set path for plot output file
     f.out <- paste(getwd(), "plot1.png", sep="/")
@@ -28,7 +26,7 @@ plot1 <- function() {
         pointsize = 12, bg = "white")
     
     # plot histogram
-    with(df.subset, hist(Global_active_power, 
+    with(tbl, hist(Global_active_power, 
                          col="red", 
                          main=("Global Active Power"),
                          xlab="Global Active Power (kilowatts)"))
