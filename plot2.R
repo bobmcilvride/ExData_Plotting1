@@ -1,9 +1,6 @@
 plot2 <- function() {
 
-    # Our overall goal here is simply to examine how household energy usage 
-    # varies over a 2-day period in February, 2007. Your task is to reconstruct 
-    # the following plots below, all of which were constructed using the base 
-    # plotting system.
+    # Plot power usage in two minute intervals for two days
     
     # set path to input file
     f <- paste(getwd(), "household_power_consumption.txt", sep="/")
