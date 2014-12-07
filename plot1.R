@@ -20,7 +20,7 @@ plot1 <- function() {
     # define graphics device
     png(filename = f.out,
         width = 480, height = 480, units = "px", 
-        pointsize = 12, bg = "white")
+        pointsize = 11, bg = "white")
     
     # plot histogram
     with(tbl, hist(Global_active_power, 
