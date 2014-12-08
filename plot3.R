@@ -23,8 +23,8 @@ plot3 <- function() {
     
     # define graphics device
     png(filename = f.out,
-        width = 480, height = 480, units = "px", 
-        pointsize = 11, bg = "white")
+        width = 640, height = 640, units = "px", 
+        pointsize = 12, bg = "white")
     
     # get the range for the x and y axis 
     xrange <- range(tbl$DateTime) 

@@ -19,8 +19,8 @@ plot1 <- function() {
     
     # define graphics device
     png(filename = f.out,
-        width = 480, height = 480, units = "px", 
-        pointsize = 11, bg = "white")
+        width = 640, height = 640, units = "px", 
+        pointsize = 12, bg = "white")
     
     # plot histogram
     with(tbl, hist(Global_active_power, 
