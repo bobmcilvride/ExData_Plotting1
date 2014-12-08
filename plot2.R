@@ -24,7 +24,7 @@ plot2 <- function() {
     # define graphics devicen
     png(filename = f.out,
         width = 480, height = 480, units = "px", 
-        pointsize = 12, bg = "white")
+        pointsize = 11, bg = "white")
         
     # set up the plot 
     plot(tbl$DateTime, 

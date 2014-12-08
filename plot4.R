@@ -24,7 +24,7 @@ plot4 <- function() {
     # define graphics device
     png(filename = f.out,
         width = 480, height = 480, units = "px", 
-        pointsize = 12, bg = "white")
+        pointsize = 11, bg = "white")
     
     # set 2x2 plot grid
     par(mfrow=c(2,2))
