@@ -3,6 +3,7 @@ plot2 <- function() {
     # Plot power usage in two minute intervals for two days
     
     # Presumes that the proper input file has been downloaded from the source and placed in the working directory
+    # Source file location is:  https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip
     
     # set path to input file
     f <- paste(getwd(), "household_power_consumption.txt", sep="/")
