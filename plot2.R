@@ -2,6 +2,8 @@ plot2 <- function() {
 
     # Plot power usage in two minute intervals for two days
     
+    # Presumes that the proper input file has been downloaded from the source and placed in the working directory
+    
     # set path to input file
     f <- paste(getwd(), "household_power_consumption.txt", sep="/")
     
@@ -23,7 +25,7 @@ plot2 <- function() {
     
     # define graphics devicen
     png(filename = f.out,
-        width = 640, height = 640, units = "px", 
+        width = 480, height = 480, units = "px", 
         pointsize = 12, bg = "white")
         
     # set up the plot 

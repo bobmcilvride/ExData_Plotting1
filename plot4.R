@@ -2,6 +2,8 @@ plot4 <- function() {
     
     # Plot four views of houwehold energy usage over a two day period.
     
+    # Presumes that the proper input file has been downloaded from the source and placed in the working directory
+    
     # set path to input file
     f <- paste(getwd(), "household_power_consumption.txt", sep="/")
     
@@ -23,7 +25,7 @@ plot4 <- function() {
     
     # define graphics device
     png(filename = f.out,
-        width = 640, height = 640, units = "px", 
+        width = 480, height = 480, units = "px", 
         pointsize = 12, bg = "white")
     
     # set 2x2 plot grid
