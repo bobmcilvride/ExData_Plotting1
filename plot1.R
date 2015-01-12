@@ -11,7 +11,7 @@ plot1 <- function() {
     # read input file
     tbl <- read.table(f, header = TRUE, sep = ";", na.strings = "?", stringsAsFactors = FALSE, comment.char = "")
     
-    # Convert Date to a class
+    # Convert Date to date class
     tbl <- transform(tbl, Date = as.Date(Date, format = "%d/%m/%Y"))
     
     # subset with specific dates

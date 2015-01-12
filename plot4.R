@@ -11,10 +11,10 @@ plot4 <- function() {
     # read input file
     tbl <- read.table(f, header = TRUE, sep = ";", na.strings = "?", stringsAsFactors = FALSE, comment.char = "")
     
-    ## create/concatenate DateTime column
+    # create/concatenate DateTime column
     tbl$DateTime <- paste(tbl$Date, tbl$Time, " ")
     
-    ## convert Date and DateTime variables to classes
+    # convert Date and DateTime to date classes
     tbl <- transform(tbl, Date = as.Date(Date, format = "%d/%m/%Y"), 
                      DateTime = strptime(DateTime, format="%d/%m/%Y %H:%M:%S"))
     
